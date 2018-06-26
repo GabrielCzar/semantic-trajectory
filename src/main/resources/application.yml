@@ -1,10 +1,19 @@
 spring:
   jpa:
-    database: MYSQL
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/semantic_trajectory?useSSL=false
-    username: root
-    password: 123456
+    url: jdbc:postgresql:///semantic_trajectory
+    username: postgres
+    password: postgres
+
+  data:
+    rest:
+      basePath: /api
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true

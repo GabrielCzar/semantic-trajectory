@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TrajectoryController {
 
-    @GetMapping(value = {"/", ""})
+    @GetMapping(value = {"/", ""}, produces = "application/json")
     public ResponseEntity home() {
         return ResponseEntity.ok().body("{ \"message\":\"Hello World.\"} ");
     }
