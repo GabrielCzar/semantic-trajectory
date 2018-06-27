@@ -1,10 +1,14 @@
 spring:
   jpa:
     database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     show-sql: true
     hibernate:
       ddl-auto: update
+
+    properties:
+          hibernate:
+          dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
+
   datasource:
     url: jdbc:postgresql:///semantic_trajectory
     username: postgres
@@ -17,3 +21,15 @@ spring:
   jackson:
     deserialization:
       fail-on-unknown-properties: true
+
+  jmx:
+    default_domain: semantic_trajectory_app
+  application:
+    name: semantic-trajectory
+
+logging:
+  level:
+    org:
+      springframework:
+        web: debug
+  file: /var/log/semantic_trajectory.log

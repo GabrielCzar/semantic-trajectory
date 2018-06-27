@@ -62,14 +62,20 @@ public class InterestPointController {
 
         LOG.info("City founded is " + cityFounded.getName());
 
-        List<InterestPoint> interestPoints = ips
-                .parallelStream()
-                .map(ip -> new InterestPoint(cityFounded, ip))
-                .collect(Collectors.toList());
+        if (!interestPointRepository.existsByCity(cityFounded)) {
 
-        interestPointRepository.saveAll(interestPoints);
+            List<InterestPoint> interestPoints = ips
+                    .parallelStream()
+                    .map(ip -> new InterestPoint(cityFounded, ip))
+                    .collect(Collectors.toList());
 
-        LOG.info("Database updated");
+            interestPointRepository.saveAll(interestPoints);
+
+            LOG.info("Database updated");
+
+        } else {
+            LOG.info("Database has updated previously");
+        }
 
         return ResponseEntity.ok(ips);
     }

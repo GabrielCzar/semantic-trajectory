@@ -9,9 +9,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-@RepositoryRestResource(path = "interest-points")
+@RepositoryRestResource(path = "interest-points", collectionResourceRel = "interest_points")
 public interface InterestPointRepository extends JpaRepository<InterestPoint, Integer> {
 
     @RestResource(path = "find-by-city", rel = "find_by_city")
     Page<InterestPoint> findAllByCity(@Param("city") City city, Pageable pageable);
+
+    @RestResource(exported = false)
+    Boolean existsByCity(City city);
 }

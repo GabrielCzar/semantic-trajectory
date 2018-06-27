@@ -3,8 +3,7 @@ package com.gabrielczar.semantic.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gabrielczar.semantic.dto.InterestPointDTO;
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
+import com.gabrielczar.semantic.utils.GeometryUtil;
 import com.vividsolutions.jts.geom.Point;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,13 +30,7 @@ public class InterestPoint {
 
     @JsonIgnore
     public Point getGeometry() {
-        final GeometryFactory gf = new GeometryFactory();
-        return gf.createPoint(
-                new Coordinate(
-                        lon,
-                        lat
-                )
-        );
+        return GeometryUtil.createPoint(lat, lon);
     }
 
     public InterestPoint(City city, InterestPointDTO ip) {

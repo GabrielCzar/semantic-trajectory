@@ -6,6 +6,7 @@ import com.gabrielczar.semantic.services.CitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,14 +38,23 @@ public class CitiesController {
 
         LOG.info("Update cities in database");
 
+        final List<City> citiesInDB = cityRepository.findAll();
+
         cityRepository.saveAll(cities
                 .parallelStream()
+                .filter(cityName -> !citiesInDB.contains(new City(cityName)))
                 .map(City::new)
                 .collect(Collectors.toList()));
 
         LOG.info("Database updated");
 
         return ResponseEntity.ok(cities);
+    }
+
+    @GetMapping("/{city}/location/fetch")
+    public ResponseEntity cityLocation(@PathVariable("city") String city) throws IOException {
+        LOG.info("Retrieve location from " + city);
+        return ResponseEntity.ok(citiesService.getLocation(city));
     }
 
 }

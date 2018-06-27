@@ -1,14 +1,19 @@
 package com.gabrielczar.semantic.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
+@RequestMapping("/semantic")
 public class TrajectoryController {
 
-    @GetMapping(value = {"/", ""}, produces = "application/json")
-    public ResponseEntity home() {
-        return ResponseEntity.ok().body("{ \"message\":\"Hello World.\"} ");
+    @PostMapping("/upload")
+    public ResponseEntity addSemanticByCsvFile(MultipartFile file) {
+
+        return ResponseEntity.ok().build(); // return resource to data
     }
+
 }
