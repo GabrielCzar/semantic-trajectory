@@ -6,4 +6,5 @@ public class Contants {
     public static final String URL__API_CITIES = "/api/cities";
     public static final String URL__API_CITY_LAT_LON = "/api/localization/city";
 
+    public static final String COMMA_DELIMITER = ",";
 }

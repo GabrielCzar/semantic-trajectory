@@ -1,7 +1,9 @@
 package com.gabrielczar.semantic.controllers;
 
+import com.gabrielczar.semantic.entities.UnMatchingEntry;
 import com.gabrielczar.semantic.services.CSVService;
-import com.gabrielczar.semantic.services.StorageService;
+import com.gabrielczar.semantic.services.UnMatchingService;
+import com.graphhopper.util.GPXEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,23 +13,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
-@RequestMapping("/api/semantic")
-public class TrajectoryController {
+@RequestMapping("/api/un-matching-entries")
+public class UnMatchingController {
     private final CSVService csvService;
-    private final StorageService storageService;
+    private final UnMatchingService unMatchingService;
 
     @Autowired
-    public TrajectoryController(CSVService csvService, StorageService storageService) {
+    public UnMatchingController(CSVService csvService, UnMatchingService unMatchingService
+    ) {
         this.csvService = csvService;
-        this.storageService = storageService;
+        this.unMatchingService = unMatchingService;
     }
 
     @PostMapping("/upload")
     public ResponseEntity handleFileUpload(@RequestParam("file") MultipartFile multipartFile) {
-        String file = storageService.store(multipartFile);
-        csvService.transformCSVinGpxEntries(file);
-        return new ResponseEntity<>(multipartFile.getOriginalFilename(), HttpStatus.CREATED);
+        Map<Integer, List<GPXEntry>> trajectories = csvService.transformCSVinGpxEntries(multipartFile);
+        List<UnMatchingEntry> unMatchingEntries = unMatchingService.saveUnMacthingEntriesFromCSV(trajectories);
+        return new ResponseEntity<>(unMatchingEntries, HttpStatus.CREATED);
     }
 
 }
