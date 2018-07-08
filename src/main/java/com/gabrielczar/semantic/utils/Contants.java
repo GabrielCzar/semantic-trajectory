@@ -7,4 +7,6 @@ public class Contants {
     public static final String URL__API_CITY_LAT_LON = "/api/localization/city";
 
     public static final String COMMA_DELIMITER = ",";
+
+    public static final String GHLOCATION_PREFIX = "graphopper-";
 }

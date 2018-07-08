@@ -12,6 +12,8 @@ public class LocationCityDTO {
     @JsonProperty("final")
     private LocationDTO ending;
 
+    private String city;
+
     public Polygon getGeometry() {
         return GeometryUtil.createPolygon(
                 initial.getLatitude(),

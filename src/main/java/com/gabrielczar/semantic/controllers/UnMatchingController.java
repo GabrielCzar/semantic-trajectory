@@ -1,5 +1,6 @@
 package com.gabrielczar.semantic.controllers;
 
+import com.gabrielczar.semantic.dto.UnMatchingResult;
 import com.gabrielczar.semantic.entities.UnMatchingEntry;
 import com.gabrielczar.semantic.services.CSVService;
 import com.gabrielczar.semantic.services.UnMatchingService;
@@ -29,11 +30,20 @@ public class UnMatchingController {
         this.unMatchingService = unMatchingService;
     }
 
+    /**
+     * All values uploaded will be save in database and referenced by a unique token
+     *
+     * @param multipartFile Uploaded file with entries in gpx format
+     * @return key
+     *
+     * */
     @PostMapping("/upload")
     public ResponseEntity handleFileUpload(@RequestParam("file") MultipartFile multipartFile) {
         Map<Integer, List<GPXEntry>> trajectories = csvService.transformCSVinGpxEntries(multipartFile);
-        List<UnMatchingEntry> unMatchingEntries = unMatchingService.saveUnMacthingEntriesFromCSV(trajectories);
-        return new ResponseEntity<>(unMatchingEntries, HttpStatus.CREATED);
+
+        UnMatchingResult result = unMatchingService.saveUnMatchingEntriesFromCSV(trajectories);
+
+        return new ResponseEntity<>(result.getKey(), HttpStatus.CREATED);
     }
 
 }
