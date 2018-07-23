@@ -35,6 +35,13 @@
             <version>1.3.0</version>
         </dependency>
 
+        <!-- Stops and moves -->
+        <dependency>
+            <groupId>com.github.lucivanbatista</groupId>
+            <artifactId>Weka-STPM</artifactId>
+            <version>v2.0.1</version>
+        </dependency>
+
         <!-- JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

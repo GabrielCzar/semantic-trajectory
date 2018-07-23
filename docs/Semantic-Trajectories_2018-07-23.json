@@ -1,0 +1,444 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-07-23T03:29:35.295Z",
+	"__export_source": "insomnia.desktop.app:v5.16.6",
+	"resources": [
+		{
+			"_id": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"created": 1531080164852,
+			"description": "",
+			"modified": 1531080164852,
+			"name": "Semantic Trajectories",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_098fdf10fd5746ccb7fea6109350027f",
+			"color": null,
+			"created": 1531080164906,
+			"data": {
+				"BASE": "http://localhost:8080/api"
+			},
+			"isPrivate": false,
+			"modified": 1531080186468,
+			"name": "New Environment",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_a43529afeb5c476eab8533725e93989a",
+			"cookies": [],
+			"created": 1531080164910,
+			"modified": 1531080164910,
+			"name": "Default Jar",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_4d2fc96f1438489eb26ca27bcf68f7d6",
+			"created": 1531080197876,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1531080197876,
+			"modified": 1531080197876,
+			"name": "Cities",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_721a659190874c12a6b7a7498f7014bb",
+			"created": 1531080205788,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1531080205788,
+			"modified": 1531080214267,
+			"name": "Interest Points",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_92e77d41faf44fb5a3a9e58a084e06b8",
+			"created": 1531081210294,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1531081210294,
+			"modified": 1531081210294,
+			"name": "Un Matched Entries",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_b1a4d414759044ca86324c448d009d52",
+			"created": 1531084682902,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1531084682902,
+			"modified": 1531084682902,
+			"name": "Matching Entries",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_e0a3c1e226b14ddf888bbd7a07e7bff4",
+			"created": 1532313502576,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1532313502576,
+			"modified": 1532313502576,
+			"name": "Semantic Trajectorie",
+			"parentId": "wrk_68ee0cdfdd354ca5b093e64284c5bd10",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_4409ff1984154a40bc682cf7a2d529df",
+			"authentication": {},
+			"body": {},
+			"created": 1531080226182,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531080226183,
+			"method": "GET",
+			"modified": 1531080232751,
+			"name": "List",
+			"parameters": [],
+			"parentId": "fld_4d2fc96f1438489eb26ca27bcf68f7d6",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/cities",
+			"_type": "request"
+		},
+		{
+			"_id": "req_fa60eadb6168406aa8b8ad4b84381390",
+			"authentication": {},
+			"body": {},
+			"created": 1531080242150,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531068350169,
+			"method": "GET",
+			"modified": 1531080254055,
+			"name": "Fetch and List",
+			"parameters": [],
+			"parentId": "fld_4d2fc96f1438489eb26ca27bcf68f7d6",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/cities/fetch",
+			"_type": "request"
+		},
+		{
+			"_id": "req_622067fc90014608957747a952105512",
+			"authentication": {},
+			"body": {},
+			"created": 1531080273568,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531080273568,
+			"method": "GET",
+			"modified": 1531080444243,
+			"name": "Get City",
+			"parameters": [],
+			"parentId": "fld_4d2fc96f1438489eb26ca27bcf68f7d6",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/cities/19",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0ef9be517f0e4371b416b3afe9ba1d88",
+			"authentication": {},
+			"body": {},
+			"created": 1531080414058,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531080414058,
+			"method": "GET",
+			"modified": 1531080494574,
+			"name": "City Interest Points",
+			"parameters": [],
+			"parentId": "fld_4d2fc96f1438489eb26ca27bcf68f7d6",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/cities/19/interestPoints",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e3f2544530884e5ba1283528f08009a0",
+			"authentication": {},
+			"body": {},
+			"created": 1531080897702,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531080897702,
+			"method": "GET",
+			"modified": 1531080928983,
+			"name": "List",
+			"parameters": [],
+			"parentId": "fld_721a659190874c12a6b7a7498f7014bb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/interest-points",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4f1e684a1bf54faf89c0c8d88f8e2969",
+			"authentication": {},
+			"body": {},
+			"created": 1531080934068,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531080655880,
+			"method": "GET",
+			"modified": 1531080950275,
+			"name": "Fetch From City",
+			"parameters": [],
+			"parentId": "fld_721a659190874c12a6b7a7498f7014bb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/interest-points/city/Beijing/fetch",
+			"_type": "request"
+		},
+		{
+			"_id": "req_27d161b51905419a9c4ad01d7a2bfe89",
+			"authentication": {},
+			"body": {},
+			"created": 1531080983349,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531080534969,
+			"method": "GET",
+			"modified": 1531081145227,
+			"name": "List By City",
+			"parameters": [
+				{
+					"id": "pair_6a6594028062459fb3da3ef410e5ba29",
+					"name": "city",
+					"value": "Beijing"
+				}
+			],
+			"parentId": "fld_721a659190874c12a6b7a7498f7014bb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/interest-points/search/find-by-city",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5d69d5680c9c46e486db30d4769fa878",
+			"authentication": {},
+			"body": {},
+			"created": 1531081215855,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1531081215855,
+			"method": "GET",
+			"modified": 1531081241562,
+			"name": "List",
+			"parameters": [],
+			"parentId": "fld_92e77d41faf44fb5a3a9e58a084e06b8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/un-matching-entries",
+			"_type": "request"
+		},
+		{
+			"_id": "req_52689f4b38014034a84457a7f2d8e99c",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"fileName": "/home/greenmile/github/semantic-trajectory/storage/taxi_data_all.csv",
+						"id": "pair_ebb1c30dd66644fb9f862bfb53a231e3",
+						"name": "file",
+						"type": "file",
+						"value": ""
+					}
+				]
+			},
+			"created": 1531081238522,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_81feff11ff5441128ad1bfc2a84963fc",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531081056778.5,
+			"method": "POST",
+			"modified": 1531091325430,
+			"name": "Upload CSV",
+			"parameters": [],
+			"parentId": "fld_92e77d41faf44fb5a3a9e58a084e06b8",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/un-matching-entries/upload",
+			"_type": "request"
+		},
+		{
+			"_id": "req_e2350abf211c4fffbccf94d02262468a",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"fileName": "/home/greenmile/Downloads/Beijing.osm.pbf",
+						"id": "pair_70b999d7973e4e9c940580aedb51028e",
+						"name": "file",
+						"type": "file",
+						"value": ""
+					}
+				]
+			},
+			"created": 1531084702301,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_e6840f64ade54b08a5742f78e9ef2e82",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531084702301,
+			"method": "PUT",
+			"modified": 1531091430121,
+			"name": "Execute Matching",
+			"parameters": [
+				{
+					"id": "pair_08e5336b399c44ac8f3f783040c02656",
+					"name": "",
+					"value": ""
+				}
+			],
+			"parentId": "fld_b1a4d414759044ca86324c448d009d52",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/matching-entries/map-matching/6rQN06h2-UpocZlm/city/Beijing",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cc5965436eb34c87a30a981185b2ab7e",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1532313509317,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_7408129d9ea0481f8e72e2c2ecf24fbb",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1532313509318,
+			"method": "POST",
+			"modified": 1532313738876,
+			"name": "IB",
+			"parameters": [
+				{
+					"id": "pair_2d34baba13ca44beae8e7474b88119dc",
+					"name": "",
+					"value": ""
+				}
+			],
+			"parentId": "fld_e0a3c1e226b14ddf888bbd7a07e7bff4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/semantics/ib",
+			"_type": "request"
+		},
+		{
+			"_id": "req_988299ff483c40a09de774dda64da1e2",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"created": 1532313514103,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_8e938ef90b49433a9d4619eb31099591",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531699105809.5,
+			"method": "POST",
+			"modified": 1532314743741,
+			"name": "CB",
+			"parameters": [
+				{
+					"id": "pair_356e7fcad67944559ab1da448419fed2",
+					"name": "max_avg_speed",
+					"value": "10"
+				},
+				{
+					"id": "pair_8d995a4a0565471e9addd2dc9e0cb40c",
+					"name": "max_speed",
+					"value": "60"
+				},
+				{
+					"id": "pair_69dac7e10c224acebfc88f6da2f8f683",
+					"name": "min_time",
+					"value": "120"
+				}
+			],
+			"parentId": "fld_e0a3c1e226b14ddf888bbd7a07e7bff4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ BASE  }}/semantics/cb",
+			"_type": "request"
+		}
+	]
+}
