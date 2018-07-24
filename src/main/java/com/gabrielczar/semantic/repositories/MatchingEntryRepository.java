@@ -8,4 +8,6 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import java.util.List;
 
 @RepositoryRestResource(path = "matching-entries", collectionResourceRel = "matching_entries")
-public interface MatchingEntryRepository extends JpaRepository<MatchingEntry, Long> {}
+public interface MatchingEntryRepository extends JpaRepository<MatchingEntry, Long> {
+    List<MatchingEntry> findAllByToken(String token);
+}

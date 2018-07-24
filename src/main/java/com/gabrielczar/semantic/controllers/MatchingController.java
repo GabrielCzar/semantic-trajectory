@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/matching-entries")
@@ -52,7 +53,12 @@ public class MatchingController {
 
         List<MatchingEntry> entries = matchingEntryService.mapMatching(osmPath, unMatchingEntries, locationCity);
 
-        List<MatchingEntry> entriesSaved = matchingEntryRepository.saveAll(entries);
+        List<MatchingEntry> entriesSaved = matchingEntryRepository.saveAll(
+                entries
+                        .parallelStream()
+                        .peek(matchingEntry -> matchingEntry.setToken(token))
+                        .collect(Collectors.toList())
+        );
 
         return ResponseEntity.ok(entriesSaved.size());
     }

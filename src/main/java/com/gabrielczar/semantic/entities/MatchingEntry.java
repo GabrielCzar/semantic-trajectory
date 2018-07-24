@@ -3,6 +3,7 @@ package com.gabrielczar.semantic.entities;
 import com.gabrielczar.semantic.utils.GeometryUtil;
 import com.vividsolutions.jts.geom.Point;
 import lombok.Data;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,8 @@ public class MatchingEntry {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long serial;
+
+    private String token;
 
     private Integer id;
     private Double latitude;
