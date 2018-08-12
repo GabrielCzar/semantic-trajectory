@@ -1,5 +1,7 @@
 package com.gabrielczar.semantic.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -14,7 +16,7 @@ import java.nio.file.*;
 
 @Service
 public class StorageService {
-
+    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
     private final Path rootLocation;
 
     @Autowired
@@ -27,8 +29,7 @@ public class StorageService {
             try {
                 Files.createDirectories(Paths.get(root));
             } catch (IOException e) {
-                e.printStackTrace();
-                // return path without access
+                LOGGER.error("Error to create directory => ", e);
             }
         }
         return Paths.get(root);
@@ -46,10 +47,12 @@ public class StorageService {
                 return resource;
             }
             else {
+                LOGGER.error("Could not read file: " + filename);
                 throw new RuntimeException("Could not read file: " + filename);
             }
         }
         catch (MalformedURLException e) {
+            LOGGER.error("Could not read file: " + filename, e);
             throw new RuntimeException("Could not read file: " + filename, e);
         }
     }
@@ -58,12 +61,13 @@ public class StorageService {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             if (file.isEmpty()) {
+                LOGGER.error("Failed to store empty file " + filename);
                 throw new RuntimeException("Failed to store empty file " + filename);
             }
             if (filename.contains("..")) {
                 // This is a security check
-                throw new RuntimeException(
-                        "Cannot store file with relative path outside current directory " + filename);
+                LOGGER.error("Cannot store file with relative path outside current directory " + filename);
+                throw new RuntimeException("Cannot store file with relative path outside current directory " + filename);
             }
             try (InputStream inputStream = file.getInputStream()) {
                 Files.copy(inputStream, this.rootLocation.resolve(filename),
@@ -73,6 +77,7 @@ public class StorageService {
             }
         }
         catch (IOException e) {
+            LOGGER.error("Failed to store file " + filename, e);
             throw new RuntimeException("Failed to store file " + filename, e);
         }
     }

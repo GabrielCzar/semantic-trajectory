@@ -1,10 +1,13 @@
+/*
+ * Copyright (c) 2018 Gabriel César
+ */
+
 package com.gabrielczar.semantic.services;
 
 import com.gabrielczar.semantic.dto.UnMatchingResult;
 import com.gabrielczar.semantic.entities.UnMatchingEntry;
 import com.gabrielczar.semantic.repositories.UnMatchingEntryRepository;
 import com.graphhopper.util.GPXEntry;
-import com.graphhopper.util.shapes.GHPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +17,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.gabrielczar.semantic.utils.ApplicationUtil.convertStringToLong;
-import static com.gabrielczar.semantic.utils.ApplicationUtil.generateToken;
-import static com.gabrielczar.semantic.utils.Contants.COMMA_DELIMITER;
+import static com.gabrielczar.semantic.utils.ApplicationUtilKt.generateToken;
+import static com.gabrielczar.semantic.utils.EntryUtilsKt.convertUnMatchingEntryToGpxEntry;
 
+/**
+ * Service ratiocinated to un matching entries
+ *
+ * @author GabrielCzar
+ * @since 1.0.0
+ *
+ * */
 @Service
 public class UnMatchingService {
     private final UnMatchingEntryRepository unMatchingEntryRepository;
@@ -55,6 +64,12 @@ public class UnMatchingService {
         return result;
     }
 
+    /**
+     * Search in database for entries based in a token identification
+     *
+     * @return HashMap where key is the ID from unMatched entry and
+     *          your value is an GpxEntry converted from unMatched entry
+     * */
     public Map<Integer, List<GPXEntry>> findEntriesByToken(String token) {
         Map<Integer, List<GPXEntry>> trajectories = new HashMap<>();
         List<UnMatchingEntry> entries = unMatchingEntryRepository.findAllByToken(token);
@@ -66,15 +81,7 @@ public class UnMatchingService {
             }
 
             if (trajectories.containsKey(_id)) {
-                trajectories.get(_id).add(
-                        new GPXEntry(
-                                new GHPoint(
-                                        entry.getLatitude(),
-                                        entry.getLongitude()
-                                ),
-                                entry.getDate().getTime()
-                        )
-                );
+                trajectories.get(_id).add(convertUnMatchingEntryToGpxEntry(entry));
             }
 
         }

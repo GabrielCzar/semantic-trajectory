@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import static com.gabrielczar.semantic.utils.Contants.URL_BASE__API_INTEREST_POINTS;
-import static com.gabrielczar.semantic.utils.Contants.URL__API_CITY_INTEREST_POINTS;
+import static com.gabrielczar.semantic.utils.ConstantsUtils.URL__API_CITY_INTEREST_POINTS;
+import static com.gabrielczar.semantic.utils.ConstantsUtils.URL__BASE__API_INTEREST_POINTS;
 
 @Service
 public class InterestPointService {
@@ -30,7 +30,7 @@ public class InterestPointService {
      * @throws IOException by invalid url or type
      */
     public List<InterestPointDTO> list(String city) throws IOException {
-        final String url = URL_BASE__API_INTEREST_POINTS + URL__API_CITY_INTEREST_POINTS + "/" + city;
+        final String url = URL__BASE__API_INTEREST_POINTS + URL__API_CITY_INTEREST_POINTS + "/" + city;
 
         TypeReference<?> typeReference = new TypeReference<List<InterestPointDTO>>(){};
 

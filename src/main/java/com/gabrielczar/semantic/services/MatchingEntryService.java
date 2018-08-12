@@ -2,7 +2,7 @@ package com.gabrielczar.semantic.services;
 
 import com.gabrielczar.semantic.dto.LocationCityDTO;
 import com.gabrielczar.semantic.entities.MatchingEntry;
-import com.gabrielczar.semantic.utils.ApplicationUtil;
+import com.gabrielczar.semantic.utils.EntryUtilsKt;
 import com.graphhopper.util.GPXEntry;
 import main.java.matching.controller.MatchingService;
 import main.java.matching.models.XFDEntry;
@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-import static com.gabrielczar.semantic.utils.Contants.GHLOCATION_PREFIX;
+import static com.gabrielczar.semantic.utils.ConstantsUtils.GH_LOCATION_PREFIX;
 
 @Service
 public class MatchingEntryService {
@@ -29,7 +29,7 @@ public class MatchingEntryService {
     }
 
     public List<MatchingEntry> mapMatching(String osmPath, Map<Integer, List<GPXEntry>> unMatchingEntries, LocationCityDTO city) {
-        final String GH_LOCATION = GHLOCATION_PREFIX + city.getCity().toLowerCase();
+        final String GH_LOCATION = GH_LOCATION_PREFIX + city.getCity().toLowerCase();
         List<MatchingEntry> matchingEntries = new ArrayList<>();
 
         matchingService.configMatching(storageService.load(osmPath).toUri().getPath(), GH_LOCATION);
@@ -41,7 +41,7 @@ public class MatchingEntryService {
                 matchingEntries.addAll(
                         entries
                                 .parallelStream()
-                                .map(ApplicationUtil::convertXFDEntryToMatchingEntry)
+                                .map(EntryUtilsKt::convertXFDEntryToMatchingEntry)
                                 .collect(Collectors.toList())
                 );
             } catch (Exception e) {

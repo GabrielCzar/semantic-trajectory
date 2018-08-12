@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.MultipartConfigElement;
 
+import static com.gabrielczar.semantic.utils.ConstantsUtils.MAX_FILE_SIZE;
+import static com.gabrielczar.semantic.utils.ConstantsUtils.STORAGE_FILENAME;
+
 @Configuration
 public class ApplicationConfiguration {
 
@@ -19,8 +22,8 @@ public class ApplicationConfiguration {
     @Bean
     public MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setMaxFileSize("50MB");
-        factory.setMaxRequestSize("50MB");
+        factory.setMaxFileSize(MAX_FILE_SIZE);
+        factory.setMaxRequestSize(MAX_FILE_SIZE);
         return factory.createMultipartConfig();
     }
 
@@ -32,6 +35,6 @@ public class ApplicationConfiguration {
 
     @Bean
     public StorageService storageService() {
-        return new StorageService("storage");
+        return new StorageService(STORAGE_FILENAME);
     }
 }

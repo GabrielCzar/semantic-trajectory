@@ -1,6 +1,6 @@
 package com.gabrielczar.semantic.controllers;
 
-import com.gabrielczar.semantic.dto.ErrorDTO;
+import com.gabrielczar.semantic.dto.ErrorWrapper;
 import com.gabrielczar.semantic.dto.InterestPointDTO;
 import com.gabrielczar.semantic.entities.City;
 import com.gabrielczar.semantic.entities.InterestPoint;
@@ -37,7 +37,7 @@ public class InterestPointController {
     @GetMapping("/city/{city}/fetch")
     public ResponseEntity listCityInterestPoints(@PathVariable String city) throws IOException {
         if (city == null)
-            return ResponseEntity.badRequest().body(ErrorDTO
+            return ResponseEntity.badRequest().body(ErrorWrapper
                     .builder()
                     .field("city")
                     .error("Required city name")
@@ -54,7 +54,7 @@ public class InterestPointController {
         final City cityFounded = cityRepository.findByName(city);
 
         if (cityFounded == null)
-            return ResponseEntity.badRequest().body(ErrorDTO
+            return ResponseEntity.badRequest().body(ErrorWrapper
                     .builder()
                     .field("city")
                     .error("Not found")

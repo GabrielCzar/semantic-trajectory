@@ -1,9 +1,7 @@
 package com.gabrielczar.semantic.entities;
 
-import com.gabrielczar.semantic.utils.GeometryUtil;
 import com.vividsolutions.jts.geom.Point;
 import lombok.Data;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigInteger;
 import java.sql.Date;
+
+import static com.gabrielczar.semantic.utils.GeometryUtilsKt.createPoint;
 
 @Data
 @Entity(name = "matching_entries")
@@ -30,6 +30,6 @@ public class MatchingEntry {
     private Point geometry;
 
     public void createGeometry() {
-        this.geometry = GeometryUtil.createPoint(latitude, longitude);
+        this.geometry = createPoint(latitude, longitude);
     }
 }
