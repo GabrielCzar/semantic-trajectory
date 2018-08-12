@@ -37,11 +37,7 @@ public class InterestPointController {
     @GetMapping("/city/{city}/fetch")
     public ResponseEntity listCityInterestPoints(@PathVariable String city) throws IOException {
         if (city == null)
-            return ResponseEntity.badRequest().body(ErrorWrapper
-                    .builder()
-                    .field("city")
-                    .error("Required city name")
-                    .build());
+            return ResponseEntity.badRequest().body(new ErrorWrapper("city", "Required city name"));
 
         LOG.info("Show interest points of the " + city);
 
@@ -54,11 +50,7 @@ public class InterestPointController {
         final City cityFounded = cityRepository.findByName(city);
 
         if (cityFounded == null)
-            return ResponseEntity.badRequest().body(ErrorWrapper
-                    .builder()
-                    .field("city")
-                    .error("Not found")
-                    .build());
+            return ResponseEntity.badRequest().body(new ErrorWrapper("city", "Not found"));
 
         LOG.info("City founded is " + cityFounded.getName());
 

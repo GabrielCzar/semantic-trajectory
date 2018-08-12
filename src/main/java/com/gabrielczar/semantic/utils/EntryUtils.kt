@@ -24,14 +24,14 @@ fun convertUnMatchingEntryToGpxEntry(entry : UnMatchingEntry) : GPXEntry {
 }
 
 fun convertXFDEntryToMatchingEntry(xfdEntry: XFDEntry): MatchingEntry {
-    return MatchingEntry().apply {
-        id = xfdEntry.tid.toInt()
-        latitude = xfdEntry.lat
-        longitude = xfdEntry.lon
-        edgeId = xfdEntry.edgeId
-        dateTime = Date(xfdEntry.time)
+    return MatchingEntry(
+        id = xfdEntry.tid.toInt(),
+        latitude = xfdEntry.lat,
+        longitude = xfdEntry.lon,
+        edgeId = xfdEntry.edgeId,
+        dateTime = Date(xfdEntry.time),
         geometry = xfdEntry.geometry.centroid
-    }
+    )
 }
 
 fun createGpxEntry (lat : Double, lon: Double, time : Long) : GPXEntry {

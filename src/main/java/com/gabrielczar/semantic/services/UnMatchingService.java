@@ -57,11 +57,10 @@ public class UnMatchingService {
             }
         }
 
-        UnMatchingResult result = new UnMatchingResult();
-        result.setEntries(unMatchingEntryRepository.saveAll(unMatchingEntries));
-        result.setKey(token);
+        return new UnMatchingResult(
+                token, unMatchingEntryRepository.saveAll(unMatchingEntries)
+        );
 
-        return result;
     }
 
     /**
